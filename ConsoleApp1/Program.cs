@@ -1,6 +1,6 @@
 ﻿using System;
-
 using System.IO;
+using System.Text;
 
 namespace ConsoleApp1
 {
@@ -10,14 +10,16 @@ namespace ConsoleApp1
         {
             string filePath = @"C:\Users\David\Desktop\UNI 2023-2024\PGTA\P2\230502-est-080001_BCN_60MN_08_09.ast";
             Console.WriteLine("Hello World!");
+
+            // Abre el archivo para lectura utilizando StreamReader
             using (StreamReader sr = new StreamReader(filePath))
             {
-                string linea;
-                // Lee y muestra cada línea del archivo
-                while ((linea = sr.ReadLine()) != null)
-                {
-                    Console.WriteLine(linea);
-                }
+                // Lee todo el contenido del StreamReader y conviértelo a bytes
+                string fileContent = sr.ReadToEnd();
+                byte[] bytes = Encoding.UTF8.GetBytes(fileContent);
+
+                // Imprime el contenido del archivo
+                Console.WriteLine(bytes[47]);
             }
         }
     }
